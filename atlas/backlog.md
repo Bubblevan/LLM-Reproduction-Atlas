@@ -1,6 +1,6 @@
 # Backlog
 
-Every active item starts at BACKLOG. Order within a priority is a practical learning sequence. Archive items remain in the matrix with reasons and have no implementation checklist.
+The REP registry contains REP-001 through REP-036: 34 active work items and 2 covered navigation items. Every active item starts at BACKLOG. Formal-project implementation status never establishes REP coverage.
 
 ## REP-001 — Byte-level BPE tokenizer
 
@@ -234,7 +234,7 @@ Study Track: Post-training<br>
 Implementation Home: [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf) / extensions/rloo_remax (planned; not created)<br>
 Coverage: NONE<br>
 Action: EXTEND_EXISTING<br>
-Existing implementation evidence: No explicit RLOO/ReMax estimator or targeted test found in CS336-A5 or the other audited repositories. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No explicit RLOO/ReMax estimator or targeted test found in CS336-A5 or the eligible learning/reproduction repository CS336-A5. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-005; REP-006 is a helpful bridge before estimator variants and group-relative objectives.  
 Reference: [reference 1](https://arxiv.org/abs/2402.14740), [reference 2](https://arxiv.org/abs/2310.10505)  
 Source inspiration: [rloo](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/rloo), [remax](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/remax)
@@ -308,7 +308,7 @@ Study Track: Distillation<br>
 Implementation Home: Planned: Distillation-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2306.08543)  
 Source inspiration: [knowledge_distillation_llm](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_llm)
@@ -345,7 +345,7 @@ Study Track: Distillation<br>
 Implementation Home: Planned: Distillation-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-010, then REP-011 for token-level distributions.  
 Reference: [reference 1](https://arxiv.org/abs/2306.08543)  
 Source inspiration: [knowledge_distillation_llm](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_llm)
@@ -382,7 +382,7 @@ Study Track: Distillation<br>
 Implementation Home: Planned: Distillation-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-010, then REP-011 for token-level distributions.  
 Reference: [reference 1](https://arxiv.org/abs/2306.08543)  
 Source inspiration: [knowledge_distillation_llm](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_llm)
@@ -456,7 +456,7 @@ Study Track: Modern Architecture<br>
 Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2405.04434)  
 Source inspiration: [deepseek_learn/MLA.py](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/MLA.py)
@@ -493,7 +493,7 @@ Study Track: Modern Architecture<br>
 Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2505.09388)  
 Source inspiration: [train_qwen3_next_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_qwen3_next_from_scratch)
@@ -530,7 +530,7 @@ Study Track: Modern Architecture<br>
 Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: DeepSeek-V3.2 report  
 Source inspiration: [deepseek_learn/dsa/model.py](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/dsa/model.py)
@@ -567,7 +567,7 @@ Study Track: Modern Architecture<br>
 Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2412.19437)  
 Source inspiration: [deepseek_learn/MTP_train](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/MTP_train)
@@ -604,7 +604,7 @@ Study Track: Modern Architecture<br>
 Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: Qwen3-Next technical report  
 Source inspiration: [train_qwen3_next_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_qwen3_next_from_scratch)
@@ -641,7 +641,7 @@ Study Track: Modern Architecture<br>
 Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2603.15031)  
 Source inspiration: [kimi_attnres/train.py](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/kimi_attnres/train.py)
@@ -678,7 +678,7 @@ Study Track: Modern Architecture<br>
 Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2512.24880)  
 Source inspiration: [deepseek_learn/mHC.ipynb](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/mHC.ipynb)
@@ -715,7 +715,7 @@ Study Track: Modern Architecture<br>
 Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2601.07372)  
 Source inspiration: [deepseek_learn/engram.ipynb](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/engram.ipynb)
@@ -752,7 +752,7 @@ Study Track: Distillation<br>
 Implementation Home: Planned: Distillation-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-010 and REP-011.  
 Reference: [reference 1](https://arxiv.org/abs/2402.12030)  
 Source inspiration: [knowledge_distillation_llm_cross_tokenizer](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_llm_cross_tokenizer)
@@ -789,7 +789,7 @@ Study Track: Distillation<br>
 Implementation Home: Planned: Distillation-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: Qwen3 Embedding report  
 Source inspiration: [knowledge_distillation_embedding](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_embedding)
@@ -826,7 +826,7 @@ Study Track: Multimodal<br>
 Implementation Home: Planned: Multimodal-From-Scratch (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2303.15343)  
 Source inspiration: [train_siglip_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_siglip_from_scratch)
@@ -863,7 +863,7 @@ Study Track: Multimodal<br>
 Implementation Home: Planned: Multimodal-From-Scratch (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2304.08485)  
 Source inspiration: [train_multimodal_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_multimodal_from_scratch)
@@ -900,7 +900,7 @@ Study Track: Reasoning / Test-Time Scaling<br>
 Implementation Home: [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf) / extensions/s1_budget_forcing (planned; not created)<br>
 Coverage: NONE<br>
 Action: EXTEND_EXISTING<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2501.19393)  
 Source inspiration: [s1_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/s1_from_scratch)
@@ -937,7 +937,7 @@ Study Track: Systems<br>
 Implementation Home: Deferred: LLM-Systems-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2205.14135), [reference 2](https://arxiv.org/abs/2307.08691)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap), [no faithful source implementation](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/no faithful source implementation)
@@ -974,7 +974,7 @@ Study Track: Systems<br>
 Implementation Home: Deferred: LLM-Systems-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2309.06180)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap), [only basic cache exists](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/only basic cache exists)
@@ -1011,7 +1011,7 @@ Study Track: Systems<br>
 Implementation Home: Deferred: LLM-Systems-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2210.17323), [reference 2](https://arxiv.org/abs/2306.00978)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap)
@@ -1048,7 +1048,7 @@ Study Track: Systems<br>
 Implementation Home: Deferred: LLM-Systems-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2211.17192)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap)
@@ -1156,10 +1156,10 @@ Do not vendor verl or run distributed trainer.
 Status: BACKLOG  
 Priority: P2  
 Study Track: Reasoning / Memory<br>
-Implementation Home: [Bubblevan/Health-Copilot](https://github.com/Bubblevan/Health-Copilot/tree/9e023dbddc1f8025e3608bfae4c5390c1a7957ef) (read-only boundary)<br>
-Coverage: PARTIAL_EXISTING<br>
-Action: READ_ONLY<br>
-Existing implementation evidence: Provenance-aware memory in [src/health_ai_copilot/runtime/memory.py](https://github.com/Bubblevan/Health-Copilot/blob/9e023dbddc1f8025e3608bfae4c5390c1a7957ef/src/health_ai_copilot/runtime/memory.py) and semantic retrieval test [tests/test_mem2d_semantic_retrieval.py](https://github.com/Bubblevan/Health-Copilot/blob/9e023dbddc1f8025e3608bfae4c5390c1a7957ef/tests/test_mem2d_semantic_retrieval.py); no training-free GRPO memory-update experiment. Keep read-only to avoid a toy duplicate. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Implementation Home: UNASSIGNED<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No implementation/test for offline rollouts, experience aggregation and retrieval was found in eligible learning/reproduction repositories CS336-A1 or CS336-A5.<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2510.08191)  
 Source inspiration: [training-free_grpo](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/training-free_grpo)
@@ -1170,11 +1170,11 @@ Can accumulated external experience help without parameter updates?
 
 ### Minimal implementation
 
-Offline rollout memory, semantic-key stub, merge and retrieve on deterministic task.
+Offline rollouts, successful-experience aggregation, memory retrieval and policy/decision feedback.
 
 ### Minimal experiment
 
-Compare fixed-seed success with/without memory.
+Compare held-out behavior with empty memory versus retrieved memory using identical offline rollouts and a fixed evaluation set.
 
 ### Completion gate
 
@@ -1196,7 +1196,7 @@ Study Track: Interpretability<br>
 Implementation Home: Deferred: Interpretability-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2202.05262)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap)
@@ -1233,7 +1233,7 @@ Study Track: Interpretability<br>
 Implementation Home: Deferred: Interpretability-Lab (not created)<br>
 Coverage: NONE<br>
 Action: NEW_REPRODUCTION<br>
-Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the eligible learning/reproduction repositories CS336-A1 and CS336-A5; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2309.08600)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap)

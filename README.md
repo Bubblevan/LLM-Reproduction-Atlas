@@ -1,59 +1,74 @@
 # LLM Reproduction Atlas
 
-A lightweight index for small, controlled reproductions of LLM algorithms and architecture mechanisms. This is a planning Atlas, not an implementation monorepo. It records what to study, the smallest experiment that demonstrates the mechanism, and the repository that owns any implementation.
+A planning index for small, controlled LLM learning/reproduction experiments. It records what to study, the minimum experiment, and the eligible learning repository that owns it.
 
-## Purpose and boundaries
+## REP invariant
 
-The audited source is [wyf3/llm_related](https://github.com/wyf3/llm_related), pinned at a492338499a9381f1714ecda8c802684e0556d3e. Its small-experiment pattern is useful; its directory structure and implementation choices are not adopted as this Atlas architecture. See the [source audit](atlas/source-audit-wyf3.md), [pinned reference inventory](references/wyf3-llm-related.md), and [existing-repository reconciliation](atlas/existing-repository-audit.md).
+> A REP represents a concrete, independently completable learning/reproduction experiment.
 
-Phase A and A.1 are documentation and audit only. No model or dataset assets are stored here. A reproduction can establish a mechanism through formulas, shape/gradient checks, an invariant or equivalence, a loss trend, qualitative behavior, or a measured tradeoff. Full-paper benchmark parity is not required for a mechanism study.
+Coverage can be established by a dedicated reproduction repository, a coursework repository whose purpose is learning/reimplementation, or an explicitly isolated reproduction extension. A formal production/research project does not establish REP coverage merely because it contains a related component. For every REP, evidence must come from an eligible learning/reproduction home.
+
+The registry has REP-001 through REP-036: 34 active work items and 2 COVERED_EXISTING navigation items. REP-037 through REP-043 are retired; their source information remains in the [source audit](atlas/source-audit-wyf3.md) and [reference inventory](references/wyf3-llm-related.md).
 
 ## Study Tracks
 
-These are conceptual learning paths. A Study Track does not imply a dedicated repository.
+Conceptual learning paths. A Study Track does not imply a dedicated repository.
 
-- Foundations: tokenizer, decoder stack, optimization, data quality and scaling.
-- Modern Architecture: MLA, GatedDeltaNet, DSA, MTP, hybrid blocks, Attention Residuals, mHC and Engram.
+- Foundations: tokenization, decoder stack, optimization, training loop, data and scaling.
+- Modern Architecture: MLA, GatedDeltaNet, DSA, MTP, hybrid blocks, Attention Residuals, mHC, Engram and MoE.
 - Post-training: policy-gradient baselines, PPO/GAE, RLOO/ReMax, GRPO/DAPO, GDPO and DPO.
 - Distillation: KL geometry, token-logit KD, on-policy KD, ULD and embedding transfer.
-- Multimodal: SigLIP objective and vision-language connector experiments.
+- Multimodal: SigLIP objective and vision-language connectors.
 - Systems: attention IO, paged KV, quantization and speculative decoding.
 - Interpretability: causal activation interventions and sparse autoencoders.
-- Cross-cutting tracks include test-time reasoning, retrieval, memory, agents and evaluation.
+- Cross-cutting studies include reasoning, memory, retrieval, agents and evaluation.
 
-See [taxonomy and boundaries](atlas/directions.md) and the [matrix](atlas/matrix.md).
+See [directions](atlas/directions.md), the [matrix](atlas/matrix.md), and the [dependency map](atlas/dependency-map.md).
 
 ## Implementation Homes
 
-Existing repositories own coherent implementation work:
+### Existing learning/reproduction homes
 
-- [Bubblevan/CS336-A1](https://github.com/Bubblevan/CS336-A1/tree/3d26a6334ab59f6e23e6e86aa6807db7ff39e420): foundational assignment; finish unfinished adapters and end-to-end tiny LM path before adding extensions.
-- [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf): post-training fundamentals; complete the DPO scaffold and extend for distinct textbook experiments.
-- [Bubblevan/TraceSearch-R1](https://github.com/Bubblevan/TraceSearch-R1/tree/db2246ff0f418d799742c17ee4dde28a3a322ba0): advanced search-agent RL, grouped rollouts, environments, verifier/reward integration and trajectory provenance.
-- [Bubblevan/Health-Copilot](https://github.com/Bubblevan/Health-Copilot/tree/9e023dbddc1f8025e3608bfae4c5390c1a7957ef): applied retrieval, memory, agent/runtime, multi-agent and retrieval evaluation.
+- [Bubblevan/CS336-A1](https://github.com/Bubblevan/CS336-A1/tree/3d26a6334ab59f6e23e6e86aa6807db7ff39e420): foundational coursework; finish its unfinished assignment adapters before adding isolated extensions.
+- [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf): post-training coursework; complete its DPO scaffold and host distinct educational experiments.
 
-Potential new repositories, only if a later architecture review approves them:
+### Potential future reproduction homes
 
 - Modern-LLM-Architecture-Lab
 - Distillation-Lab
 - Multimodal-From-Scratch
 
-Deferred: LLM-Systems-Lab and Interpretability-Lab. No repository was created in Phase A.1. The former LLM-From-Scratch and PostTraining-From-Scratch proposals are removed.
+### Deferred
+
+- LLM-Systems-Lab
+- Interpretability-Lab
+
+## Formal Project Boundaries
+
+Formal-project implementation status is not REP completion evidence.
+
+### TraceSearch-R1
+
+Bubblevan/TraceSearch-R1 is an active formal search-agent/RL project. It may inform Atlas scope and integration decisions, but it is not an Atlas reproduction repository, does not provide REP coverage, and is not a project Atlas must reproduce in full for completeness.
+
+### Health-Copilot
+
+Bubblevan/Health-Copilot is an active formal retrieval/memory/multi-agent/harness project. It may inform scope and integration decisions, but it is not an Atlas reproduction repository and does not provide REP coverage. The presence of a memory, retrieval or agent component does not mean a separately specified Atlas mechanism has been reproduced.
 
 ## Revised P0 queue
 
-There are 11 active P0 items. REP-008 GRPO is covered and is navigation-only.
+There are 11 active P0 items. REP-008 GRPO is covered by CS336-A5 and is navigation-only.
 
-1. REP-001 — complete CS336-A1 byte-level BPE/tokenizer adapters.
+1. REP-001 — complete CS336-A1 BPE/tokenizer adapters.
 2. REP-002 — complete CS336-A1 TransformerBlock/TransformerLM, optimizer, schedule, clipping, checkpoint and tiny end-to-end training.
 3. REP-003 — extend CS336-A1 with GQA and incremental KV cache.
 4. REP-004 — extend CS336-A1 with MoE, outside official assignment content.
-5. REP-005 — add two-action bandit variance experiment in CS336-A5.
+5. REP-005 — add the two-action bandit variance experiment in CS336-A5.
 6. REP-006 — add critic/value loss and GAE/bootstrapping in CS336-A5.
 7. REP-007 — add RLOO/ReMax estimators in CS336-A5.
-8. REP-009 — extend CS336-A5 with separately tested DAPO components.
+8. REP-009 — add isolated DAPO components in CS336-A5.
 9. REP-010 — KL direction/support experiment.
 10. REP-011 — same-tokenizer token-logit distillation.
 11. REP-012 — on-policy token distillation.
 
-REP-013 response-only masking is also COVERED_EXISTING and removed from active work. REP-014 DPO remains SCAFFOLDED in CS336-A5 and should be completed there. See the [dependency map](atlas/dependency-map.md), [repository audit](atlas/existing-repository-audit.md), and [matrix](atlas/matrix.md). The source catalog still has 43 candidates; 34 are active after reconciliation.
+REP-013 response-only masking is also covered by CS336-A5 and removed from active work. REP-034 is an independent P2 reproduction with no home assigned yet. See the [repository audit](atlas/existing-repository-audit.md) for eligible-project evidence and formal-project boundaries.

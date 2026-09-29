@@ -48,6 +48,18 @@ Local tree: clean at audit; remote main SHA matched local HEAD.
 - [gradio_mcp_client.py](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/gradio_mcp_client.py)
 - [table_rag.ipynb](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/table_rag.ipynb)
 
+## Retired/non-REP source items
+
+These audited source items are retained in the inventory but are not REP registry entries. Retired IDs: REP-037, REP-038, REP-039, REP-040, REP-041, REP-042 and REP-043. See the [detailed retirement rationale](../atlas/source-audit-wyf3.md#retirednon-rep-source-items).
+
+- Full Search-R1 reproduction — code-r1/search_r1: [upstream](https://github.com/PeterGriffinJin/Search-R1); full-project scope, not a bounded REP.
+- Rebuild vendored verl — code-r1/verl and gdpo/verl: [upstream](https://github.com/volcengine/verl); framework reconstruction, not an isolated mechanism.
+- Generic RAG/table-RAG — rag_demo and table_rag.ipynb: [FAISS](https://github.com/facebookresearch/faiss); generic application demonstration.
+- LangGraph/deep-research/MCP — langgraph_agent, deep_research and all_to_tool_call: [LangGraph](https://github.com/langchain-ai/langgraph); generic framework scaffold.
+- PDF/table extraction — pdf2markdown and table_extract: [gptpdf](https://github.com/CosmosShadow/gptpdf); application integration, provenance caveat retained in the source audit.
+- OpenVINO embedding shim — all_embd_to_openai.py: [OpenVINO](https://github.com/openvinotoolkit/openvino); narrow API utility.
+- Date extraction — date_modify.ipynb: [JioNLP](https://github.com/dongrixinyu/JioNLP); narrow utility without an LLM mechanism.
+
 ## Primary paper references
 
 | Topic | Canonical link |

@@ -1,6 +1,6 @@
 # Dependency map
 
-This graph orders mechanisms and learning prerequisites, not repositories. Each node resolves to its actual Implementation Home in the matrix. A Study Track does not imply a dedicated repository.
+This graph orders concrete REP mechanisms, not formal-project repositories. REP coverage comes only from eligible learning/reproduction homes. Formal-project boundaries are documented separately in directions.md.
 
 ~~~mermaid
 flowchart TD
@@ -26,7 +26,7 @@ flowchart TD
   GRPO --> DAPO[REP-009 DAPO: CS336-A5 extension]
   GRPO --> GDPO[REP-033 GDPO: CS336-A5 extension]
   DPO[REP-014 DPO: CS336-A5 scaffold] -. preference objective .-> PPO
-  GRPO --> TFG[REP-034 memory method: Health-Copilot read-only boundary]
+  GRPO --> TFG[REP-034 independent offline memory reproduction: unassigned]
   KL[REP-010 KL geometry: Distillation candidate] --> KD[REP-011 same-token logit KD]
   KD --> ON[REP-012 on-policy KD]
   KD --> ULD[REP-023 ULD]
@@ -39,9 +39,6 @@ flowchart TD
   LM --> DATA[REP-032 dedup/scaling: CS336-A1 extension]
   LM --> PATCH[REP-035 activation patching: deferred Interpretability]
   PATCH --> SAE[REP-036 SAE: deferred Interpretability]
-  BUDGET[REP-027 s1 controller: CS336-A5 extension candidate]
-  TRACE[TraceSearch-R1: search-agent RL and provenance]
-  HEALTH[Health-Copilot: retrieval, memory, agents and evaluation]
 ~~~
 
 ## Weekend entry points
@@ -54,7 +51,8 @@ flowchart TD
 - REP-030 — quantize a fixed small matrix; deferred Systems candidate.
 - REP-031 — draft/target categorical sampler; deferred Systems candidate.
 - REP-032 — deduplicate a small sample under a CS336-A1 extension path.
+- REP-034 — offline rollout/memory aggregation/retrieval; compare empty vs retrieved memory.
 - REP-035 — activation patching on a toy transformer; deferred Interpretability.
 - REP-036 — SAE over generated activations with known factors; deferred Interpretability.
 
-Model paths begin after REP-002 in CS336-A1. PPO/GAE is distinct from GRPO clipping; GRPO is already covered by CS336-A5 and is not duplicated. KD begins with probability-space KL before token alignment and on-policy states. Record skipped prerequisites in each future reproduction.
+Model-based paths begin after REP-002 in CS336-A1. PPO/GAE is distinct from GRPO clipping; GRPO is covered by CS336-A5. REP-034 is a separate training-free experiment and does not inherit coverage from an adjacent formal project.

@@ -44,7 +44,7 @@ No; service demo.
 READ_ONLY
 
 ### Destination
-Archive; generic tool execution already belongs to Health-Copilot.
+Retire as a generic tool-execution scaffold; no isolated mechanism.
 
 ## code-r1
 
@@ -81,7 +81,7 @@ No; copied framework plus adaptation.
 READ_ONLY
 
 ### Destination
-Archive full reproduction; TraceSearch-R1 overlaps.
+Retire as a full-project reproduction; no bounded standalone REP.
 
 ## dapo_from_scratch
 
@@ -154,7 +154,7 @@ No; demo.
 ARCHIVE
 
 ### Destination
-Health-Copilot owns generic agent runtime; archive scaffold.
+Retire as a generic agent-runtime scaffold; no isolated mechanism.
 
 ## deepseek_learn
 
@@ -456,7 +456,7 @@ No; orchestration demo.
 ARCHIVE
 
 ### Destination
-Health-Copilot; archive generic scaffold.
+Retire as a generic framework scaffold; no distinct LLM mechanism.
 
 ## llm_agent_zero
 
@@ -497,7 +497,7 @@ No; system adaptation with vendored upstream.
 READ_ONLY
 
 ### Destination
-TraceSearch-R1 overlap; no separate repository.
+Full-system integration context; no separate REP.
 
 ## pdf2markdown
 
@@ -601,7 +601,7 @@ No; demo.
 ARCHIVE
 
 ### Destination
-Health-Copilot covers retrieval/evaluation.
+Generic application retrieval/evaluation; no isolated LLM mechanism.
 
 ## reinforce++
 
@@ -1002,7 +1002,7 @@ No; API-driven adaptation, no weight gradients.
 READ_ONLY
 
 ### Destination
-Health-Copilot is the read-only boundary for REP-034; no duplicate toy memory study.
+UNASSIGNED; retain this source idea for a standalone reproduction, with no existing-project coverage claim.
 
 ## Root files
 
@@ -1174,7 +1174,7 @@ No; integration demo.
 ARCHIVE
 
 ### Destination
-Health-Copilot only if a concrete need arises.
+Application integration reference only if a concrete need arises.
 
 ### table_rag.ipynb
 
@@ -1208,7 +1208,23 @@ No; demo.
 ARCHIVE
 
 ### Destination
-Health-Copilot.
+No Atlas implementation home; source reference only.
+
+## Retired/non-REP source items
+
+These source items remain audited and discoverable, but their former REP-037–REP-043 identifiers are retired. They are not registry rows or backlog items.
+
+| Former ID (retired) | Source item and path | Type | Upstream | Useful lesson retained | Why no REP is created |
+|---|---|---|---|---|---|
+| REP-037 (retired) — Full Search-R1 reproduction | [code-r1/search_r1](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/code-r1/search_r1) | VENDORED_UPSTREAM | [upstream 1](https://github.com/PeterGriffinJin/Search-R1) / [Search-R1](https://github.com/PeterGriffinJin/Search-R1) | Understand search-agent RL, retrieval/tool loops and reward-driven search at system level. | Full formal-project scale; no standalone bounded reproduction question. It is not replaced by formal-project coverage. |
+| REP-038 (retired) — Rebuild vendored verl framework | [code-r1/verl](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/code-r1/verl)<br>[gdpo/verl](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/gdpo/verl) | VENDORED_UPSTREAM | [upstream 1](https://github.com/volcengine/verl) / [verl](https://github.com/volcengine/verl) | Inspect how orchestration supports training algorithms. | Rebuilding a vendored framework is infrastructure work, not an isolated learning mechanism; embedded exact upstream SHA was unverified. |
+| REP-039 (retired) — Generic RAG/table-RAG demo | [rag_demo](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/rag_demo)<br>[table_rag.ipynb](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/table_rag.ipynb) | DEMO | [upstream 1](https://github.com/facebookresearch/faiss) / [FAISS](https://github.com/facebookresearch/faiss) | Learn the retrieval-to-answer integration path and table-oriented retrieval shape. | Generic application demo without a distinctive LLM mechanism; not an independently completable REP. |
+| REP-040 (retired) — LangGraph/deep-research/MCP scaffold | [langgraph_agent](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/langgraph_agent)<br>[deep_research](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deep_research)<br>[all_to_tool_call](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/all_to_tool_call) | DEMO | [upstream 1](https://github.com/langchain-ai/langgraph) / [LangGraph](https://github.com/langchain-ai/langgraph) | Observe tool routing, graph orchestration and MCP integration patterns. | Generic framework/application scaffold; no isolated algorithm or experiment. |
+| REP-041 (retired) — PDF/table extraction demo | [pdf2markdown](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/pdf2markdown)<br>[table_extract](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/table_extract) | ADAPTATION | [upstream 1](https://github.com/CosmosShadow/gptpdf) / [gptpdf](https://github.com/CosmosShadow/gptpdf) (exact provenance unverified) | Study document-to-structured-text integration and table parsing failure modes. | Application integration rather than an LLM mechanism; exact imported upstream revision is unverified. |
+| REP-042 (retired) — OpenVINO embedding API shim | [all_embd_to_openai.py](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/all_embd_to_openai.py) | DEMO | [upstream 1](https://github.com/openvinotoolkit/openvino) / [OpenVINO](https://github.com/openvinotoolkit/openvino) | See how a local embedding backend can be exposed through an API-shaped wrapper. | Narrow inference/API utility; no distinctive LLM reproduction mechanism. |
+| REP-043 (retired) — Date extraction notebook | [date_modify.ipynb](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/date_modify.ipynb) | DEMO | [upstream 1](https://github.com/dongrixinyu/JioNLP) / [JioNLP](https://github.com/dongrixinyu/JioNLP) | Explore date normalization and extraction in a domain utility. | Narrow utility outside the Atlas reproduction scope; no LLM mechanism. |
+
+The original detailed source observations remain in the sections above; this table records registry retirement, not deletion of source-audit evidence.
 
 ## Cross-cutting evidence notes
 
