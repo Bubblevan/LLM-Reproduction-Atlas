@@ -110,3 +110,6 @@ Local tree: clean at audit; remote main SHA matched local HEAD.
 
 ## Evidence policy
 The full 33-entry file-level audit is in atlas/source-audit-wyf3.md. File paths in that audit resolve under the pinned commit above.
+
+
+For current implementation ownership and evidence in Bubblevan repositories, see the [existing-repository reconciliation](../atlas/existing-repository-audit.md).

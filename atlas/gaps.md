@@ -26,3 +26,8 @@ The audit is pinned to a492338499a9381f1714ecda8c802684e0556d3e. “Missing” m
 Highest-value absent material is systems knowledge (tiled attention, KV allocation, quantization, speculative decoding), data/scaling methodology, and causal interpretability. The first systems item gets P1 because it is a bounded foundational mechanism; other items remain P2. The repository’s most visible weakness is that impressive labels sometimes wrap pretrained models or trainer adaptations; the Atlas therefore separates mechanism studies from source-folder names.
 
 Search-Agent verification, reward design and tool environments are already serious TraceSearch-R1 territory. General retrieval, reranking, memory and agent harness work are already Health-Copilot territory. New Atlas candidates must isolate a different mechanism rather than recreate those stacks.
+
+
+## Existing project boundaries
+
+Exact implementation/test evidence for CS336-A1, CS336-A5, TraceSearch-R1 and Health-Copilot is in the [existing-repository audit](existing-repository-audit.md). Generic retrieval, memory, agents, harness/runtime and retrieval evaluation stay with Health-Copilot; agentic RL, rollouts, verifier/reward integration and trajectory provenance stay with TraceSearch-R1.

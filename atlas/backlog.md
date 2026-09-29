@@ -6,7 +6,11 @@ Every active item starts at BACKLOG. Order within a priority is a practical lear
 
 Status: BACKLOG  
 Priority: P0  
-Repository: LLM-From-Scratch  
+Study Track: Foundations<br>
+Implementation Home: [Bubblevan/CS336-A1](https://github.com/Bubblevan/CS336-A1/tree/3d26a6334ab59f6e23e6e86aa6807db7ff39e420)<br>
+Coverage: SCAFFOLDED<br>
+Action: COMPLETE_EXISTING<br>
+Existing implementation evidence: [tests/adapters.py](https://github.com/Bubblevan/CS336-A1/blob/3d26a6334ab59f6e23e6e86aa6807db7ff39e420/tests/adapters.py): get_tokenizer and run_train_bpe remain NotImplementedError adapters; tokenizer tests specify behavior, but student-facing implementation is scaffolded. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: BPE  
 Source inspiration: [train_llm_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_llm_from_scratch)
@@ -17,7 +21,7 @@ How do merge operations define a stable, reversible vocabulary?
 
 ### Minimal implementation
 
-Train pair counts and merges; implement encode/decode and byte fallback; expose vocabulary and lengths.
+Complete the existing CS336-A1 tokenizer adapters for deterministic byte-level BPE training and encode/decode; expose vocabulary and lengths.
 
 ### Minimal experiment
 
@@ -25,7 +29,7 @@ Round-trip mixed text; compare token counts before/after merges.
 
 ### Completion gate
 
-Round trips pass; merges are deterministic; repeated substrings compress.
+CS336-A1 tokenizer tests pass; mixed UTF-8 round trips hold; merges are deterministic and repeated substrings compress.
 
 ### Stretch goals
 
@@ -39,7 +43,11 @@ Do not use a production tokenizer library for the core algorithm or a large corp
 
 Status: BACKLOG  
 Priority: P0  
-Repository: LLM-From-Scratch  
+Study Track: Foundations<br>
+Implementation Home: [Bubblevan/CS336-A1](https://github.com/Bubblevan/CS336-A1/tree/3d26a6334ab59f6e23e6e86aa6807db7ff39e420)<br>
+Coverage: PARTIAL_EXISTING<br>
+Action: COMPLETE_EXISTING<br>
+Existing implementation evidence: Implemented components in [cs336_basics/layers.py](https://github.com/Bubblevan/CS336-A1/blob/3d26a6334ab59f6e23e6e86aa6807db7ff39e420/cs336_basics/layers.py), [cs336_basics/attention.py](https://github.com/Bubblevan/CS336-A1/blob/3d26a6334ab59f6e23e6e86aa6807db7ff39e420/cs336_basics/attention.py), [cs336_basics/nn_utils.py](https://github.com/Bubblevan/CS336-A1/blob/3d26a6334ab59f6e23e6e86aa6807db7ff39e420/cs336_basics/nn_utils.py); tests [tests/test_model.py](https://github.com/Bubblevan/CS336-A1/blob/3d26a6334ab59f6e23e6e86aa6807db7ff39e420/tests/test_model.py), [tests/test_nn_utils.py](https://github.com/Bubblevan/CS336-A1/blob/3d26a6334ab59f6e23e6e86aa6807db7ff39e420/tests/test_nn_utils.py). TransformerBlock/TransformerLM/training adapters remain unfinished; no end-to-end tiny LM trainer found. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-001 is useful for the full language path; a tokenizer stub is acceptable.  
 Reference: GPT-style causal LM  
 Source inspiration: [train_llm_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_llm_from_scratch)
@@ -50,7 +58,7 @@ Which components are needed for next-token learning on a tiny corpus?
 
 ### Minimal implementation
 
-Build causal decoder with mask, norm, RoPE, attention, SwiGLU and CE.
+Complete the existing CS336-A1 TransformerBlock/TransformerLM in place. Finish batch sampling, AdamW, cosine schedule/warmup, gradient clipping and checkpoint serialization around the implemented Linear, Embedding, RMSNorm, SwiGLU, attention, RoPE, MHA and cross-entropy components.
 
 ### Minimal experiment
 
@@ -58,7 +66,7 @@ Overfit tiny text; record loss and sample continuations.
 
 ### Completion gate
 
-Correct shapes/mask, finite gradients, falling loss, generation from trained weights.
+Required CS336-A1 component and integration tests pass; masks and shapes are correct; gradients are finite; checkpoint round-trip works; a tiny end-to-end LM run shows falling loss and generation from trained weights.
 
 ### Stretch goals
 
@@ -68,11 +76,17 @@ Compare positions or MHA/GQA.
 
 Do not reproduce large checkpoints or trainer ecosystems.
 
+
+This gate completes the CS336-A1 assignment stack in place; it does not create another tiny Transformer implementation.
 ## REP-003 — GQA and incremental KV cache
 
 Status: BACKLOG  
 Priority: P0  
-Repository: LLM-From-Scratch  
+Study Track: Foundations / Systems<br>
+Implementation Home: [Bubblevan/CS336-A1](https://github.com/Bubblevan/CS336-A1/tree/3d26a6334ab59f6e23e6e86aa6807db7ff39e420) / extensions/gqa_kv_cache (planned; not created)<br>
+Coverage: PARTIAL_EXISTING<br>
+Action: EXTEND_EXISTING<br>
+Existing implementation evidence: MHA/attention in [cs336_basics/attention.py](https://github.com/Bubblevan/CS336-A1/blob/3d26a6334ab59f6e23e6e86aa6807db7ff39e420/cs336_basics/attention.py) and [tests/test_model.py](https://github.com/Bubblevan/CS336-A1/blob/3d26a6334ab59f6e23e6e86aa6807db7ff39e420/tests/test_model.py); no GQA head sharing or incremental KV cache found in the five repositories. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2305.13245)  
 Source inspiration: [train_llm_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_llm_from_scratch)
@@ -105,7 +119,11 @@ Do not build a serving server or fused kernel.
 
 Status: BACKLOG  
 Priority: P0  
-Repository: LLM-From-Scratch  
+Study Track: Foundations / Modern Architecture<br>
+Implementation Home: [Bubblevan/CS336-A1](https://github.com/Bubblevan/CS336-A1/tree/3d26a6334ab59f6e23e6e86aa6807db7ff39e420) / extensions/moe (planned; not created)<br>
+Coverage: NONE<br>
+Action: EXTEND_EXISTING<br>
+Existing implementation evidence: No MoE router/expert implementation or targeted test found in the five repositories. Planned extension path is outside official A1 content. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2101.03961)  
 Source inspiration: [train_moe_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_moe_from_scratch)
@@ -138,7 +156,11 @@ Do not add distributed expert parallelism.
 
 Status: BACKLOG  
 Priority: P0  
-Repository: PostTraining-From-Scratch  
+Study Track: Post-training<br>
+Implementation Home: [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf) / extensions/policy_gradient_bandit (planned; not created)<br>
+Coverage: PARTIAL_EXISTING<br>
+Action: EXTEND_EXISTING<br>
+Existing implementation evidence: Related policy-gradient primitives in [cs336_alignment/reasoning/grpo_loss.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/cs336_alignment/reasoning/grpo_loss.py), tested by [tests/test_grpo.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/tests/test_grpo.py); no Atlas two-action-bandit variance experiment. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/1707.06347)  
 Source inspiration: [ppo_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/ppo_from_scratch)
@@ -171,7 +193,11 @@ Do not add language models or rollout services.
 
 Status: BACKLOG  
 Priority: P0  
-Repository: PostTraining-From-Scratch  
+Study Track: Post-training<br>
+Implementation Home: [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf) / extensions/ppo_gae (planned; not created)<br>
+Coverage: PARTIAL_EXISTING<br>
+Action: EXTEND_EXISTING<br>
+Existing implementation evidence: GRPO-style clipping in [cs336_alignment/reasoning/grpo_loss.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/cs336_alignment/reasoning/grpo_loss.py)/[tests/test_grpo.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/tests/test_grpo.py); no critic/value loss, GAE or bootstrap estimator found. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-005; REP-006 is a helpful bridge before estimator variants and group-relative objectives.  
 Reference: [reference 1](https://arxiv.org/abs/1707.06347)  
 Source inspiration: [ppo_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/ppo_from_scratch)
@@ -204,7 +230,11 @@ Do not build distributed RLHF infrastructure.
 
 Status: BACKLOG  
 Priority: P0  
-Repository: PostTraining-From-Scratch  
+Study Track: Post-training<br>
+Implementation Home: [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf) / extensions/rloo_remax (planned; not created)<br>
+Coverage: NONE<br>
+Action: EXTEND_EXISTING<br>
+Existing implementation evidence: No explicit RLOO/ReMax estimator or targeted test found in CS336-A5 or the other audited repositories. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-005; REP-006 is a helpful bridge before estimator variants and group-relative objectives.  
 Reference: [reference 1](https://arxiv.org/abs/2402.14740), [reference 2](https://arxiv.org/abs/2310.10505)  
 Source inspiration: [rloo](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/rloo), [remax](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/remax)
@@ -233,44 +263,15 @@ Add learned value baseline as reference.
 
 Do not compare end-to-end model scores or inherit TRL loops.
 
-## REP-008 — GRPO group-relative advantages
-
-Status: BACKLOG  
-Priority: P0  
-Repository: PostTraining-From-Scratch  
-Prerequisites: REP-005; REP-006 is a helpful bridge before estimator variants and group-relative objectives.  
-Reference: [reference 1](https://arxiv.org/abs/2402.03300)  
-Source inspiration: [grpo_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/grpo_from_scratch)
-
-### Question
-
-Why can group-relative baseline learning omit a critic?
-
-### Minimal implementation
-
-Grouped policy samples, reward centering/scaling and clipped objective.
-
-### Minimal experiment
-
-Synthetic task with known preferred action; inspect advantages and update.
-
-### Completion gate
-
-Group stats correct, zero variance explicit, preferred action probability rises.
-
-### Stretch goals
-
-Sweep group size/normalization.
-
-### Do NOT do
-
-Do not add search tools or verifier platform.
-
 ## REP-009 — DAPO selected components
 
 Status: BACKLOG  
 Priority: P0  
-Repository: PostTraining-From-Scratch  
+Study Track: Post-training<br>
+Implementation Home: [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf) / extensions/dapo (planned; not created)<br>
+Coverage: PARTIAL_EXISTING<br>
+Action: EXTEND_EXISTING<br>
+Existing implementation evidence: Related GRPO/Dr.GRPO primitives in [cs336_alignment/reasoning/grpo_advantage.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/cs336_alignment/reasoning/grpo_advantage.py), [cs336_alignment/reasoning/grpo_loss.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/cs336_alignment/reasoning/grpo_loss.py), [tests/test_grpo.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/tests/test_grpo.py); no Clip-Higher, dynamic sampling/zero-variance filter or complete DAPO-specific overlong handling. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-005; REP-006 is a helpful bridge before estimator variants and group-relative objectives.  
 Reference: [reference 1](https://arxiv.org/abs/2503.14476)  
 Source inspiration: [dapo_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/dapo_from_scratch)
@@ -303,7 +304,11 @@ Do not claim complete DAPO or build large rollout systems.
 
 Status: BACKLOG  
 Priority: P0  
-Repository: Distillation-Lab  
+Study Track: Distillation<br>
+Implementation Home: Planned: Distillation-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2306.08543)  
 Source inspiration: [knowledge_distillation_llm](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_llm)
@@ -336,7 +341,11 @@ Do not involve text models before probability-space behavior is clear.
 
 Status: BACKLOG  
 Priority: P0  
-Repository: Distillation-Lab  
+Study Track: Distillation<br>
+Implementation Home: Planned: Distillation-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-010, then REP-011 for token-level distributions.  
 Reference: [reference 1](https://arxiv.org/abs/2306.08543)  
 Source inspiration: [knowledge_distillation_llm](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_llm)
@@ -369,7 +378,11 @@ Do not download large checkpoints.
 
 Status: BACKLOG  
 Priority: P0  
-Repository: Distillation-Lab  
+Study Track: Distillation<br>
+Implementation Home: Planned: Distillation-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-010, then REP-011 for token-level distributions.  
 Reference: [reference 1](https://arxiv.org/abs/2306.08543)  
 Source inspiration: [knowledge_distillation_llm](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_llm)
@@ -398,44 +411,15 @@ Mix teacher and student prefixes.
 
 Do not use paid APIs or production rollout code.
 
-## REP-013 — Assistant-only loss masking
-
-Status: BACKLOG  
-Priority: P1  
-Repository: LLM-From-Scratch  
-Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
-Reference: Transformers causal LM docs  
-Source inspiration: [train_llm_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_llm_from_scratch)
-
-### Question
-
-Which chat tokens contribute to SFT cross entropy?
-
-### Minimal implementation
-
-Conversation serializer and assistant target mask.
-
-### Minimal experiment
-
-Print aligned spans and toggle user labels as negative control.
-
-### Completion gate
-
-Only assistant targets contribute; padding and shifts align.
-
-### Stretch goals
-
-Tool-call assistant spans and packed examples.
-
-### Do NOT do
-
-Do not build a dataset platform or UI.
-
 ## REP-014 — Direct Preference Optimization
 
 Status: BACKLOG  
 Priority: P1  
-Repository: PostTraining-From-Scratch  
+Study Track: Post-training<br>
+Implementation Home: [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf)<br>
+Coverage: SCAFFOLDED<br>
+Action: COMPLETE_EXISTING<br>
+Existing implementation evidence: [cs336_alignment/assistant/dpo.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/cs336_alignment/assistant/dpo.py) and run_dpo.py are docstring-only; DPO adapter in [tests/adapters.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/tests/adapters.py) raises NotImplementedError; expected behavior in [tests/test_dpo.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/tests/test_dpo.py).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2305.18290)  
 Source inspiration: [knowledge_distillation_llm](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_llm)
@@ -468,7 +452,11 @@ Do not add reward model or preference UI.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Modern-LLM-Architecture-Lab  
+Study Track: Modern Architecture<br>
+Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2405.04434)  
 Source inspiration: [deepseek_learn/MLA.py](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/MLA.py)
@@ -501,7 +489,11 @@ Do not claim DeepSeek-V2 training reproduction.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Modern-LLM-Architecture-Lab  
+Study Track: Modern Architecture<br>
+Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2505.09388)  
 Source inspiration: [train_qwen3_next_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_qwen3_next_from_scratch)
@@ -534,7 +526,11 @@ Do not build all of Qwen3-Next.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Modern-LLM-Architecture-Lab  
+Study Track: Modern Architecture<br>
+Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: DeepSeek-V3.2 report  
 Source inspiration: [deepseek_learn/dsa/model.py](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/dsa/model.py)
@@ -567,7 +563,11 @@ Do not claim production fidelity.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Modern-LLM-Architecture-Lab  
+Study Track: Modern Architecture<br>
+Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2412.19437)  
 Source inspiration: [deepseek_learn/MTP_train](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/MTP_train)
@@ -600,7 +600,11 @@ Do not rebuild DeepSeek-V3 training stack.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Modern-LLM-Architecture-Lab  
+Study Track: Modern Architecture<br>
+Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: Qwen3-Next technical report  
 Source inspiration: [train_qwen3_next_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_qwen3_next_from_scratch)
@@ -633,7 +637,11 @@ Do not claim full Qwen3-Next fidelity.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Modern-LLM-Architecture-Lab  
+Study Track: Modern Architecture<br>
+Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2603.15031)  
 Source inspiration: [kimi_attnres/train.py](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/kimi_attnres/train.py)
@@ -666,7 +674,11 @@ Do not bundle MoE or claim full Kimi architecture.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Modern-LLM-Architecture-Lab  
+Study Track: Modern Architecture<br>
+Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2512.24880)  
 Source inspiration: [deepseek_learn/mHC.ipynb](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/mHC.ipynb)
@@ -699,7 +711,11 @@ Do not treat notebook as proof of full paper results.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Modern-LLM-Architecture-Lab  
+Study Track: Modern Architecture<br>
+Implementation Home: Planned: Modern-LLM-Architecture-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2601.07372)  
 Source inspiration: [deepseek_learn/engram.ipynb](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/deepseek_learn/engram.ipynb)
@@ -732,7 +748,11 @@ Do not build vector DB or claim full Engram reproduction.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Distillation-Lab  
+Study Track: Distillation<br>
+Implementation Home: Planned: Distillation-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: REP-010 and REP-011.  
 Reference: [reference 1](https://arxiv.org/abs/2402.12030)  
 Source inspiration: [knowledge_distillation_llm_cross_tokenizer](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_llm_cross_tokenizer)
@@ -765,7 +785,11 @@ Do not load multi-billion parameter models.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Distillation-Lab  
+Study Track: Distillation<br>
+Implementation Home: Planned: Distillation-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: Qwen3 Embedding report  
 Source inspiration: [knowledge_distillation_embedding](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/knowledge_distillation_embedding)
@@ -798,7 +822,11 @@ Do not claim Qwen benchmark results without its assets.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Multimodal-From-Scratch  
+Study Track: Multimodal<br>
+Implementation Home: Planned: Multimodal-From-Scratch (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2303.15343)  
 Source inspiration: [train_siglip_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_siglip_from_scratch)
@@ -831,7 +859,11 @@ Do not train towers or fetch MUGE initially.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: Multimodal-From-Scratch  
+Study Track: Multimodal<br>
+Implementation Home: Planned: Multimodal-From-Scratch (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2304.08485)  
 Source inspiration: [train_multimodal_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/train_multimodal_from_scratch)
@@ -864,7 +896,11 @@ Do not train pretrained encoders or build a demo.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: PostTraining-From-Scratch  
+Study Track: Reasoning / Test-Time Scaling<br>
+Implementation Home: [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf) / extensions/s1_budget_forcing (planned; not created)<br>
+Coverage: NONE<br>
+Action: EXTEND_EXISTING<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: See dependency-map.md; use a stub where training would cause setup work.  
 Reference: [reference 1](https://arxiv.org/abs/2501.19393)  
 Source inspiration: [s1_from_scratch](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/s1_from_scratch)
@@ -897,7 +933,11 @@ Do not fine-tune a large checkpoint or conflate search rollouts.
 
 Status: BACKLOG  
 Priority: P1  
-Repository: LLM-Systems-Lab  
+Study Track: Systems<br>
+Implementation Home: Deferred: LLM-Systems-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2205.14135), [reference 2](https://arxiv.org/abs/2307.08691)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap), [no faithful source implementation](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/no faithful source implementation)
@@ -930,7 +970,11 @@ Do not write CUDA/Triton in first version.
 
 Status: BACKLOG  
 Priority: P2  
-Repository: LLM-Systems-Lab  
+Study Track: Systems<br>
+Implementation Home: Deferred: LLM-Systems-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2309.06180)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap), [only basic cache exists](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/only basic cache exists)
@@ -963,7 +1007,11 @@ Do not build an inference server or reproduce vLLM.
 
 Status: BACKLOG  
 Priority: P2  
-Repository: LLM-Systems-Lab  
+Study Track: Systems<br>
+Implementation Home: Deferred: LLM-Systems-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2210.17323), [reference 2](https://arxiv.org/abs/2306.00978)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap)
@@ -996,7 +1044,11 @@ Do not use large checkpoints or claim full GPTQ/AWQ.
 
 Status: BACKLOG  
 Priority: P2  
-Repository: LLM-Systems-Lab  
+Study Track: Systems<br>
+Implementation Home: Deferred: LLM-Systems-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2211.17192)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap)
@@ -1029,7 +1081,11 @@ Do not optimize GPU batching or build production decoder.
 
 Status: BACKLOG  
 Priority: P2  
-Repository: LLM-From-Scratch  
+Study Track: Foundations / Training Data & Scaling<br>
+Implementation Home: [Bubblevan/CS336-A1](https://github.com/Bubblevan/CS336-A1/tree/3d26a6334ab59f6e23e6e86aa6807db7ff39e420) / extensions/data_quality_scaling (planned; not created)<br>
+Coverage: NONE<br>
+Action: EXTEND_EXISTING<br>
+Existing implementation evidence: CS336-A1 data/batch scaffolding in [tests/adapters.py](https://github.com/Bubblevan/CS336-A1/blob/3d26a6334ab59f6e23e6e86aa6807db7ff39e420/tests/adapters.py); no controlled deduplication/scaling study found. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2203.15556)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap)
@@ -1062,7 +1118,11 @@ Do not claim scaling law from a handful of toy runs.
 
 Status: BACKLOG  
 Priority: P2  
-Repository: PostTraining-From-Scratch  
+Study Track: Post-training<br>
+Implementation Home: [Bubblevan/CS336-A5](https://github.com/Bubblevan/CS336-A5/tree/26653042601b8dfde33e0ababa5cd4728e5756bf) / extensions/gdpo (planned; not created)<br>
+Coverage: PARTIAL_EXISTING<br>
+Action: EXTEND_EXISTING<br>
+Existing implementation evidence: Reward/group primitives in [cs336_alignment/reasoning/grpo_advantage.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/cs336_alignment/reasoning/grpo_advantage.py)/[tests/test_grpo.py](https://github.com/Bubblevan/CS336-A5/blob/26653042601b8dfde33e0ababa5cd4728e5756bf/tests/test_grpo.py); no per-dimension GDPO normalization found. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2601.05242)  
 Source inspiration: [gdpo/train_gdpo.sh](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/gdpo/train_gdpo.sh), [gdpo/verl/verl/trainer/ppo/core_algos.py](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/gdpo/verl/verl/trainer/ppo/core_algos.py)
@@ -1095,7 +1155,11 @@ Do not vendor verl or run distributed trainer.
 
 Status: BACKLOG  
 Priority: P2  
-Repository: PostTraining-From-Scratch  
+Study Track: Reasoning / Memory<br>
+Implementation Home: [Bubblevan/Health-Copilot](https://github.com/Bubblevan/Health-Copilot/tree/9e023dbddc1f8025e3608bfae4c5390c1a7957ef) (read-only boundary)<br>
+Coverage: PARTIAL_EXISTING<br>
+Action: READ_ONLY<br>
+Existing implementation evidence: Provenance-aware memory in [src/health_ai_copilot/runtime/memory.py](https://github.com/Bubblevan/Health-Copilot/blob/9e023dbddc1f8025e3608bfae4c5390c1a7957ef/src/health_ai_copilot/runtime/memory.py) and semantic retrieval test [tests/test_mem2d_semantic_retrieval.py](https://github.com/Bubblevan/Health-Copilot/blob/9e023dbddc1f8025e3608bfae4c5390c1a7957ef/tests/test_mem2d_semantic_retrieval.py); no training-free GRPO memory-update experiment. Keep read-only to avoid a toy duplicate. [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2510.08191)  
 Source inspiration: [training-free_grpo](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/training-free_grpo)
@@ -1128,7 +1192,11 @@ Do not call paid APIs or describe it as gradient-based GRPO.
 
 Status: BACKLOG  
 Priority: P2  
-Repository: Interpretability-Lab  
+Study Track: Interpretability<br>
+Implementation Home: Deferred: Interpretability-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2202.05262)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap)
@@ -1161,7 +1229,11 @@ Do not claim a full circuit from one intervention.
 
 Status: BACKLOG  
 Priority: P2  
-Repository: Interpretability-Lab  
+Study Track: Interpretability<br>
+Implementation Home: Deferred: Interpretability-Lab (not created)<br>
+Coverage: NONE<br>
+Action: NEW_REPRODUCTION<br>
+Existing implementation evidence: No directly relevant implementation and targeted test found in the five audited repositories; see [audit details](existing-repository-audit.md#reproduction-level-crosswalk).<br>
 Prerequisites: None; start from a small corpus or synthetic tensors.  
 Reference: [reference 1](https://arxiv.org/abs/2309.08600)  
 Source inspiration: [Gap](https://github.com/wyf3/llm_related/tree/a492338499a9381f1714ecda8c802684e0556d3e/Gap)

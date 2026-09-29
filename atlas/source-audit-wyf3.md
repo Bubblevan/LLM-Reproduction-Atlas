@@ -117,7 +117,7 @@ Partly: handwritten update mechanics, partial recipe.
 REIMPLEMENT_DIFFERENTLY
 
 ### Destination
-PostTraining-From-Scratch, REP-009.
+CS336-A5/extensions/dapo (planned), REP-009.
 
 ## deep_research
 
@@ -232,7 +232,7 @@ No; algorithm adaptation plus vendored upstream.
 REIMPLEMENT_DIFFERENTLY
 
 ### Destination
-PostTraining-From-Scratch, REP-033.
+CS336-A5/extensions/gdpo (planned), REP-033.
 
 ## grpo_from_scratch
 
@@ -265,10 +265,10 @@ Model loading, data and rollout batching are supporting scaffolding.
 Partly; central objective mechanics handwritten.
 
 ### Proposed action
-REIMPLEMENT_DIFFERENTLY
+NO_ACTION
 
 ### Destination
-PostTraining-From-Scratch, REP-008.
+CS336-A5, REP-008 (covered existing; see reconciliation audit).
 
 ## kimi_attnres
 
@@ -566,7 +566,7 @@ Partly; update mechanics handwritten, language-model stack upstream.
 REIMPLEMENT_DIFFERENTLY
 
 ### Destination
-PostTraining-From-Scratch, REP-005–006.
+CS336-A5/extensions/policy_gradient_bandit (planned, REP-005); CS336-A5/extensions/ppo_gae (planned, REP-006).
 
 ## rag_demo
 
@@ -671,7 +671,7 @@ No; framework adaptation.
 REIMPLEMENT_DIFFERENTLY
 
 ### Destination
-PostTraining-From-Scratch, REP-007.
+CS336-A5/extensions/rloo_remax (planned), REP-007.
 
 ## rloo
 
@@ -706,7 +706,7 @@ No; trainer adaptation.
 REIMPLEMENT_DIFFERENTLY
 
 ### Destination
-PostTraining-From-Scratch, REP-007.
+CS336-A5/extensions/rloo_remax (planned), REP-007.
 
 ## s1_from_scratch
 
@@ -742,7 +742,7 @@ No; pretrained fine-tuning, incomplete s1 recipe.
 REIMPLEMENT_DIFFERENTLY
 
 ### Destination
-PostTraining-From-Scratch, REP-027.
+CS336-A5/extensions/s1_budget_forcing (planned), REP-027.
 
 ## table_extract
 
@@ -816,7 +816,7 @@ Partly; useful handwritten core, not zero-dependency.
 REPRODUCE
 
 ### Destination
-LLM-From-Scratch, REP-001–003 and REP-013.
+CS336-A1 (REP-001–002); CS336-A1/extensions/gqa_kv_cache (planned, REP-003); CS336-A5 (REP-013).
 
 ## train_moe_from_scratch
 
@@ -853,7 +853,7 @@ Partly; MoE mechanism handwritten on framework scaffold.
 REIMPLEMENT_DIFFERENTLY
 
 ### Destination
-LLM-From-Scratch, REP-004.
+CS336-A1/extensions/moe (planned), REP-004.
 
 ## train_multimodal_from_scratch
 
@@ -999,10 +999,10 @@ API cost/prompt management are not needed to study core update.
 No; API-driven adaptation, no weight gradients.
 
 ### Proposed action
-REIMPLEMENT_DIFFERENTLY
+READ_ONLY
 
 ### Destination
-PostTraining-From-Scratch, REP-034 as a simulated P2 study.
+Health-Copilot is the read-only boundary for REP-034; no duplicate toy memory study.
 
 ## Root files
 

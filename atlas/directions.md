@@ -1,56 +1,67 @@
 # Directions and repository boundaries
 
-## Taxonomy
+## Study Tracks
 
-The taxonomy is a knowledge map. Cross-cutting items get one implementation home in the matrix; references from other domains are links, not duplicate implementations.
+A Study Track is a conceptual learning path. A Study Track does not imply a dedicated repository. Every matrix item has one Implementation Home: an existing repository, a planned extension path, a later potential repository, or a deferred/archive reference.
 
-| Domain | Coverage in source / Atlas | Cross-cutting examples |
+| Study Track | Representative mechanisms | Current boundary |
 |---|---|---|
-| Training Data & Scaling | weak source coverage; REP-032 queued | dedup affects scaling interpretation and evaluation |
-| Model Architecture | decoder, MoE, MLA, GatedDeltaNet, DSA, MTP, AttnRes, mHC, Engram | attention intersects inference memory; Engram intersects memory |
-| Pretraining / SFT | small causal LM and assistant-only masking candidates | data/tokenizer choices affect every downstream result |
-| Post-training & Alignment | PPO, RLOO, ReMax, REINFORCE++, GRPO, DAPO, GDPO, DPO | GRPO also belongs to reasoning and verifier-based learning |
-| Reasoning / Verification / Test-Time Scaling | GRPO, DAPO, s1 budget forcing, training-free GRPO | reward/verifier quality and inference budget are distinct axes |
-| Distillation | forward/reverse KL, on-policy, ULD, embedding ranking | intersects compression and student deployment |
-| Retrieval / Long Context / Memory | source has RAG demos; Atlas defers paged KV and isolates Engram | Health-Copilot owns application retrieval and memory |
-| Agent / Tool Use / Harness | source demos, Search-R1/Agent0 adaptations | TraceSearch-R1 and Health-Copilot already have serious coverage |
-| Multimodal | SigLIP loss and projector adaptation | visual tokens are an architecture and data interface |
-| Efficiency / Training Systems / Inference Systems | weak source coverage; future systems queue | GQA/KV cache is in LLM-From-Scratch; larger serving systems deferred |
-| Evaluation | source demos report task metrics, but no common robust eval harness | every experiment needs a small controlled metric |
-| Interpretability | absent as a coherent source module; two P2 items | activation patching and SAE should use tiny known circuits/features first |
-| Safety / Security | weak/absent isolated mechanism | prompt injection sandbox may be scoped inside Health-Copilot |
-| Domain-specific / AI for Science | medical retrieval/document examples; no distinct research mechanism | date utility and OCR demos are archived |
+| Foundations | Tokenization, decoder stack, optimization, training loop | CS336-A1; complete its official assignment adapters before extensions. |
+| Modern Architecture | MLA, GatedDeltaNet, DSA, MTP, hybrid blocks, Attention Residuals, mHC, Engram, MoE | MoE extends CS336-A1; other topics may use Modern-LLM-Architecture-Lab. |
+| Post-training | Policy gradient, PPO/GAE, RLOO/ReMax, GRPO/DAPO, GDPO and DPO | CS336-A5 owns fundamentals; complete DPO there and extend for distinct experiments. |
+| Distillation | KL geometry, token KD, on-policy KD, ULD, embedding transfer | Potential Distillation-Lab. |
+| Multimodal | SigLIP objective and vision-language connectors | Potential Multimodal-From-Scratch. |
+| Systems | Tiled attention, paged KV, quantization and speculative decoding | LLM-Systems-Lab deferred; GQA/KV cache is a CS336-A1 extension. |
+| Interpretability | Activation patching and sparse autoencoders | Interpretability-Lab deferred. |
+| Reasoning / Test-Time Scaling | Budget forcing, search and inference compute | CS336-A5 for pedagogical objectives; TraceSearch-R1 for search-agent RL and real rollouts. |
+| Retrieval / Memory | BM25/dense retrieval, fusion and provenance-aware memory | Health-Copilot owns applied retrieval and memory; no toy duplicate. |
+| Agents / Harness | Tool execution, replay, multi-agent orchestration and evaluation | Health-Copilot and TraceSearch-R1 retain their established domains. |
 
-### Cross-cutting placement rules
+## Existing Implementation Homes
 
-- GRPO has one implementation in PostTraining-From-Scratch; its reasoning/verifier relationship is documented in the experiment notes.
-- GQA cache correctness lives with the foundational decoder; serving allocation and prefix reuse live in LLM-Systems-Lab.
-- DSA and Engram live in the architecture lab even though they retrieve information; neither becomes a second RAG application.
-- ULD and embedding ranking distillation live in Distillation-Lab, not a separate retrieval project.
-- s1 budget forcing and training-free GRPO are inference-time reasoning studies. The latter never updates weights; its P2 study uses offline simulated memory.
-- Evaluation work is attached to each reproduction’s minimal controlled experiment. A standalone evaluation framework is deferred unless a specific metric or benchmark question emerges.
+- **CS336-A1:** official foundational assignment and completion work. GQA/KV cache, MoE and data-quality studies belong below clearly separate extensions/ paths, not in official assignment content.
+- **CS336-A5:** post-training fundamentals, including tested response masks and GRPO. Add pedagogical PPO/GAE, RLOO/ReMax, DAPO or bandit studies only where the exact mechanism is absent. Complete DPO in its existing scaffold.
+- **TraceSearch-R1:** search-agent RL, grouped rollouts, search environments, verifier/reward integration, trajectory provenance and project-level GRPO actor updates. This is an advanced reference, not a claim of exact full Search-R1 reproduction.
+- **Health-Copilot:** generic retrieval, memory, multi-agent, harness/runtime and retrieval evaluation. Keep paper-specific memory methods read-only unless a distinct, non-toy need is identified.
 
-## Satellite repository proposal
+## Potential new repositories
 
-| Repository | Keep | Explicit boundary |
+These are candidates for later review, not repositories created in Phase A.1.
+
+| Candidate | Track | Scope |
 |---|---|---|
-| LLM-From-Scratch | byte BPE, small decoder, SFT masking, GQA/KV cache, MoE, data dedup experiment | no production trainer, distributed runtime or copied framework |
-| Modern-LLM-Architecture-Lab | one module per architecture mechanism, formula/shape/invariant check, optional microbenchmark | no broad model zoo and no claim of full paper reproduction from a toy block |
-| PostTraining-From-Scratch | shared tiny categorical policy and explicit objective equations; PPO→RLOO/ReMax→GRPO→DAPO; optional DPO/GDPO | no agent/search environment, web UI, or production rollout service |
-| Distillation-Lab | categorical KL through model/tokenizer/embedding transfer | no checkpoint hub or large-scale compression benchmark |
-| Multimodal-From-Scratch | isolated pairwise objective and connector/packing path | no from-scratch vision tower or large pretraining pipeline in the initial scope |
-| LLM-Systems-Lab | deferred kernel/cache/quantization/decoding studies | no serving product; Tier D only when the concept requires it |
-| Interpretability-Lab | deferred causal interventions and SAE feature recovery | no general observability platform |
+| Modern-LLM-Architecture-Lab | Modern Architecture | Isolated mechanisms with formula, shape, invariant and optional microbenchmark evidence. |
+| Distillation-Lab | Distillation | Small categorical/token/embedding transfer experiments without a checkpoint hub. |
+| Multimodal-From-Scratch | Multimodal | Isolated objectives and connector paths; no large from-scratch vision tower. |
 
-The first five form coherent study homes. The last two remain named future directions, not Phase A repositories. Do not create repositories until architecture review approves the boundaries.
+## Deferred repositories
 
-## Compute and time conventions
+| Candidate | Reason |
+|---|---|
+| LLM-Systems-Lab | Keep future systems studies queued by mechanism; no need to create the repository now. |
+| Interpretability-Lab | Retain the direction until a coherent group of experiments is ready for review. |
 
-| Tier | Target | Typical acceptable proof |
-|---|---|---|
-| A | laptop CPU, tiny synthetic tensors/corpus | equations, shapes, finite gradients, invariant or toy behavior |
-| B | one 16GB GPU | tiny model/data runs; primary local target |
-| C | one 40–48GB GPU | only where a pretrained encoder or larger activation materially teaches the concept |
-| D | multi-GPU | avoid; justify per candidate, never inherit vendor recipe requirements blindly |
+The former **LLM-From-Scratch** and **PostTraining-From-Scratch** proposals are removed. Their distinct experiments belong in CS336-A1 or CS336-A5, with official assignment work separated from extensions.
 
-Expected time labels XS/S/M/L describe relative scope, not elapsed-time promises. Candidate experiments should avoid downloading checkpoints by default; use tiny initialized modules, synthetic inputs, or local assets only if already available.
+## Coverage and action vocabulary
+
+Coverage requires implementation plus an appropriate test or experiment, not a README claim or filename.
+
+| Coverage | Meaning |
+|---|---|
+| NONE | No relevant implementation found. |
+| SCAFFOLDED | Placeholder, test adapter or incomplete stub; mechanism not implemented. |
+| PARTIAL_EXISTING | Relevant primitives exist, but the Atlas experiment or required mechanism is incomplete. |
+| COVERED_EXISTING | Implementation and relevant test/experiment exist; not active backlog work. |
+| SUPERSEDED | Existing advanced reference replaces this Atlas objective; no exact paper reproduction is implied. |
+| ARCHIVED | Source/reference record only. |
+
+| Action | Meaning |
+|---|---|
+| NEW_REPRODUCTION | Build a focused reproduction in a later approved home. |
+| COMPLETE_EXISTING | Finish the scaffold or implementation in its current home. |
+| EXTEND_EXISTING | Add a distinct mechanism below an existing repository's extension boundary. |
+| READ_ONLY | Use the existing home as reference; no duplicate experiment is queued. |
+| NO_ACTION | Already covered, archived or out of scope. |
+
+See the [repository audit](existing-repository-audit.md) and [matrix](matrix.md) for exact ownership and code/test evidence.
